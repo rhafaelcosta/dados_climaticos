@@ -1,0 +1,30 @@
+<div class="container"  style="max-width: 400px; margin: auto">
+  <div class="card card-login mx-auto mt-5">
+
+    <div class="card-header">
+      Login
+    </div>
+
+    <div class="card-body">
+      <form autocomplete="off" #f="ngForm" >
+
+        <div class="form-group">
+          <input type="email" class="form-control" name="usuario" placeholder="E-mail" ngModel required #usuario/>
+        </div>
+
+        <div class="form-group">
+          <input type="password" class="form-control" name="senha" placeholder="Senha" ngModel required #senha/>
+        </div>
+
+        <div class="form-group">
+          <button type="submit" class="form-control btn btn-primary" [disabled]="f.invalid"
+                  (click)="login(usuario.value, senha.value); senha.value = '';">Login</button>
+        </div>
+
+      </form>
+
+    </div>
+
+  </div>
+
+</div>
