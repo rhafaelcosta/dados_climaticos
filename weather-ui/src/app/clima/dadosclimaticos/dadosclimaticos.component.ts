@@ -63,6 +63,7 @@ export class DadosClimaticosComponent implements OnInit {
     this.buscarDadosClimaticos(this.selectedValue, this.dataInicial, this.dataFinal, true);
   }
 
+  // Método respónsavel por alterar a cidade que está syncronizando os dados
   SyncCidade() {
     this.cidadeService.AlterarCidadeSync(this.selectedValue)
                       .then(cidade => {
@@ -74,6 +75,7 @@ export class DadosClimaticosComponent implements OnInit {
                       });
   }
 
+  // Método respónsavel por buscar os dados climaticos
   private buscarDadosClimaticos(cidadeId: number, dataInicial: Date, dataFinal: Date, showMessage: boolean = false) {
     this.dadosClimaticosService.getDadosHistoricos(cidadeId, dataInicial, dataFinal)
                                .then(dados => {
@@ -87,6 +89,7 @@ export class DadosClimaticosComponent implements OnInit {
                                 });
   }
 
+  // Método respónsavel por gerar os gráficos
   private gerarGrafico(dados: DadosGrafico[]) {
     this.temp = [];
     this.tempMax = [];

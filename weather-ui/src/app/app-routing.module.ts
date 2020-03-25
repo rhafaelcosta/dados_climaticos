@@ -5,6 +5,7 @@ import { LoginFormComponent } from './seguranca/login-form/login-form.component'
 import { PaginaNaoEncontradaComponent } from './core/pagina-nao-encontrada.component';
 import { DadosClimaticosComponent } from './clima/dadosclimaticos/dadosclimaticos.component';
 
+// Cadastro de rotas de navegação
 const routes: Routes = [
   { path: '', redirectTo: 'login', pathMatch: 'full' },
   { path: 'login', component: LoginFormComponent },

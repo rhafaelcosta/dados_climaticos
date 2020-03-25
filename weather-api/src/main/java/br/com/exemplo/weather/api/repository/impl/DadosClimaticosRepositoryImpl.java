@@ -20,6 +20,7 @@ public class DadosClimaticosRepositoryImpl implements DadosClimaticosRepositoryQ
 	@PersistenceContext
 	private EntityManager manager;
 	
+	// Método responsável por listar todos os dados climaticos, aplicando os filtros informados
 	@Override
 	public List<DadosClimaticos> buscarDadosClimaticos(Long cidadeId, LocalDate inicio, LocalDate fim) {
 
@@ -35,7 +36,8 @@ public class DadosClimaticosRepositoryImpl implements DadosClimaticosRepositoryQ
 		return query.getResultList();
 		
 	}
-		
+
+	// Método responsável por agrupor os dados da cidade por mês e ano
 	@Override
 	public List<DadosGraficoDTO> buscarDadosAgrupadosPorMesAno(Long cidadeId, LocalDate inicio, LocalDate fim) {
 		CriteriaBuilder criteriaBuilder = manager.getCriteriaBuilder();		
@@ -62,6 +64,7 @@ public class DadosClimaticosRepositoryImpl implements DadosClimaticosRepositoryQ
 		return query.getResultList();
 	}
 	
+	// Método responsável por criar os filtros do SELECT
 	private Predicate[] criarRestricoes(Long cidadeId, LocalDate inicio, LocalDate fim, CriteriaBuilder builder, Root<DadosClimaticos> root) {
 		
 		List<Predicate> predicates = new ArrayList<>();		

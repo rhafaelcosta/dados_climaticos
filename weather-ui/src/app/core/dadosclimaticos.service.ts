@@ -11,6 +11,7 @@ export class DadosClimaticosService {
 
   private dadosClimaticosURL: string;
 
+  // Dadps estáticos utilizado pela tabela de dados climáticos
   dadoHistorico: DadosClimaticos[] = [
     {cidade: 'Curitiba', data: new Date(), temperatura: 25.68, temperaturaMax: 25.69, temperaturaMin: 12.69, umidade: 49},
     {cidade: 'Curitiba', data: new Date(), temperatura: 25.68, temperaturaMax: 25.69, temperaturaMin: 12.69, umidade: 49},
@@ -28,6 +29,7 @@ export class DadosClimaticosService {
     this.dadosClimaticosURL = `${environment.apiUrl}/dados/climaticos`;
   }
 
+  // Método respónsavel por consumir api http que busca os dados climaticos
   public getDadosHistoricos(cidadeId: number, dataInicial: Date, dataFinal: Date): Promise<DadosGrafico[]> {
 
     let url = `${this.dadosClimaticosURL}/graficos/${cidadeId}`;

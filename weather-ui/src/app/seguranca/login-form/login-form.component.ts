@@ -19,6 +19,7 @@ export class LoginFormComponent implements OnInit {
   ngOnInit(): void {
   }
 
+  // Método respónsvel por realizar o login do usuário
   login(usuario: string, senha: string) {
     new Promise<boolean>((resolve, reject) => {
       if (this.senha === senha && this.usuario === usuario) {

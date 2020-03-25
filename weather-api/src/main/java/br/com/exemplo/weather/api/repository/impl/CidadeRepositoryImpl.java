@@ -17,6 +17,7 @@ public class CidadeRepositoryImpl implements CidadeRepositoryQuery {
 	@PersistenceContext
 	private EntityManager manager;
 	
+	// Método respónsavel por listar todas as cidades cadastras
 	@Override
 	public List<CidadeDTO> listar() {
 

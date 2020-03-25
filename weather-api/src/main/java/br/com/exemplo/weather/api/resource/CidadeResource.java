@@ -23,22 +23,40 @@ public class CidadeResource {
 	@Autowired
 	private CidadeRepository cidadeRepository;
 
+	/**
+	 * Listar todas as cidades
+	 * @return Lista de cidades
+	 */
 	@GetMapping
 	public List<CidadeDTO> listar() {
 		return cidadeRepository.listar();
 	}
 	
+	/**
+	 * Buscar cidade pelo nome
+	 * @param nome
+	 * @return Cidade
+	 */
 	@GetMapping("/porNome")
 	public Cidade findByName(@RequestParam String nome) {
 		return cidadeRepository.findByNomeLike(nome);
 	}
 	
+	/**
+	 * Buscar cidade que está syncronizando os dados do servidor openweathermap
+	 * @return Cidade
+	 */
 	@GetMapping("/sync")
 	public CidadeDTO findBySync() {
 		Cidade cidade = cidadeRepository.findByAtivoIsTrue();
 		return new CidadeDTO(cidade.getId(), cidade.getNome());
 	}
 
+	/**
+	 * Método responsavel por alterar a cidade que vai syncronizar os dados climáticos
+	 * @param codigo da cidade
+	 * @return Cidade
+	 */
 	@PutMapping("/{codigo}/ativo")
 	public ResponseEntity<Cidade> atualizarPropriedadeAtivo(@PathVariable Long codigo) {
 

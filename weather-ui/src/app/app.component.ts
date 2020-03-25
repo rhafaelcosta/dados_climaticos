@@ -12,6 +12,7 @@ export class AppComponent {
 
   constructor(private router: Router) { }
 
+  // Método respónsavel por escolher quando exibir o componente navbar
   exibindoNavbar() {
     return this.router.url !== '/login';
   }

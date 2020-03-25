@@ -22,13 +22,24 @@ public class DadosClimaticosResource {
 	@Autowired
 	private DadosClimaticosRepository dadosClimaticosRepository;
 
-	@GetMapping
+	/**
+	 * Listar todos os dados climáticos
+	 * @return Lista de dados climáticos 
+	 */
+	@GetMapping	
 	public List<DadosClimaticos> listar() {
 		return dadosClimaticosRepository.findAll();
 	}
 	
+	/**
+	 * Listar os dados climáticos por cidade, data inicial e data final
+	 * @param cidadeId
+	 * @param dataInicial
+	 * @param dataFinal
+	 * @return Lista de dados climáticos
+	 */
 	@GetMapping("/graficos/{cidadeId}")
-	public List<DadosGraficoDTO> buscarDados(@PathVariable Long cidadeId, 
+	public List<DadosGraficoDTO> buscarDadosAgrupadosPorMesAno(@PathVariable Long cidadeId, 
 											 @RequestParam(name = "dataInicial", required= false) @DateTimeFormat(pattern = "yyyy-MM-dd") LocalDate inicio,
 											 @RequestParam(name = "dataFinal", required= false) @DateTimeFormat(pattern = "yyyy-MM-dd") LocalDate fim) {
 
