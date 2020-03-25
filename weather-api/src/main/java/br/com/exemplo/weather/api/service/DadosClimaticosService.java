@@ -26,6 +26,7 @@ public class DadosClimaticosService {
 	@Autowired	
 	private CidadeRepository cidadeRepository;
 
+	// Método responsavel por consumir a API openweathermap
 	// FixedDelay 900000 = 15 Minutos
 	@Scheduled(fixedDelay = 900000)
 	public void buscarDadosClimaticos() {
@@ -43,10 +44,12 @@ public class DadosClimaticosService {
 		}
 	}
 	
+	// Método respónsavel por salvar os dados climaticos
 	private void salvarDados(Main dados, Cidade cidade) {
 		dadosClimaticosRepository.save(convertWheatherObjectToDadosClimaticos(dados, cidade));
 	}
 	
+	// Método respónsavel por converter os dados climaticos que a API openweathermap retorna
 	private DadosClimaticos convertWheatherObjectToDadosClimaticos(Main dados, Cidade cidade) {
 		DadosClimaticos dc = new DadosClimaticos();		
 		

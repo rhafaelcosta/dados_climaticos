@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.RestController;
 import br.com.exemplo.weather.api.dto.CidadeDTO;
 import br.com.exemplo.weather.api.model.Cidade;
 import br.com.exemplo.weather.api.repository.CidadeRepository;
+import br.com.exemplo.weather.api.service.CidadeService;
 
 @RestController
 @RequestMapping("/cidades")
@@ -23,6 +24,8 @@ public class CidadeResource {
 	@Autowired
 	private CidadeRepository cidadeRepository;
 
+	@Autowired
+	private CidadeService cidadeService;	
 	/**
 	 * Listar todas as cidades
 	 * @return Lista de cidades
@@ -59,25 +62,13 @@ public class CidadeResource {
 	 */
 	@PutMapping("/{codigo}/ativo")
 	public ResponseEntity<Cidade> atualizarPropriedadeAtivo(@PathVariable Long codigo) {
-
-		Cidade cidade = null;
-		
 		try {
-			Cidade cidadeAtiva = cidadeRepository.findByAtivoIsTrue();		
-			cidade = cidadeRepository.findById(codigo).get();
-			
-			cidadeAtiva.setAtivo(false);
-			cidade.setAtivo(true);
-
-			cidadeRepository.save(cidadeAtiva);
-			cidadeRepository.save(cidade);
-
+			Cidade cidade = cidadeService.alterarCidadeSync(codigo);
 			return ResponseEntity.status(HttpStatus.OK).body(cidade);
 
 		} catch (Exception e) {
-			return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(cidade);
-		}
-		
+			return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(null);
+		}		
 	}
 
 }
