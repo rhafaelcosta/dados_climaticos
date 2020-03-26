@@ -15,6 +15,11 @@ import br.com.exemplo.weather.api.dto.DadosGraficoDTO;
 import br.com.exemplo.weather.api.model.DadosClimaticos;
 import br.com.exemplo.weather.api.repository.DadosClimaticosRepository;
 
+/**
+ * Classe respónsavel por agrupar os recursos REST de dados climaticos
+ * @author Rhafael
+ *
+ */
 @RestController
 @RequestMapping("/dados/climaticos")
 public class DadosClimaticosResource {

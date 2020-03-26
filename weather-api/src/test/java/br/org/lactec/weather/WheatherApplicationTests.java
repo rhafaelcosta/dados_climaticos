@@ -18,6 +18,11 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 
 import br.com.exemplo.weather.api.WeatherApplication;
 
+/**
+ * Class respónsavel por configurar os testes da aplicação 
+ * @author Rhafael
+ *
+ */
 @RunWith(SpringJUnit4ClassRunner.class)
 @SpringBootTest(classes = WeatherApplication.class)
 @WebAppConfiguration

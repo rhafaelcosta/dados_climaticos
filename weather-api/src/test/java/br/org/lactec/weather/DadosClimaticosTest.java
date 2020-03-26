@@ -11,6 +11,11 @@ import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
 
 import br.com.exemplo.weather.api.dto.DadosGraficoDTO;
 
+/**
+ * Classe respónsvel pelos testes de dados climáticos 
+ * @author Rhafael
+ *
+ */
 public class DadosClimaticosTest extends WeatherApplicationTests {
 
 	@Override
@@ -19,6 +24,10 @@ public class DadosClimaticosTest extends WeatherApplicationTests {
 		super.setUp();
 	}
 
+	/**
+	 * Método respónsavel por testar a busca dos dados climáticos agrupados por mês e ano 
+	 * @throws Exception
+	 */
 	@Test
 	public void getCidade() throws Exception {
 		String uri = "/dados/climaticos/graficos/6322752";

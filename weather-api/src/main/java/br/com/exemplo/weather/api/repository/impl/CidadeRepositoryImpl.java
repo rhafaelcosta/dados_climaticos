@@ -12,12 +12,19 @@ import javax.persistence.criteria.Root;
 import br.com.exemplo.weather.api.dto.CidadeDTO;
 import br.com.exemplo.weather.api.model.Cidade;
 
+/**
+ * Classe respónsavel por implementar as consultas personalizadas de cidades
+ * @author Rhafael
+ *
+ */
 public class CidadeRepositoryImpl implements CidadeRepositoryQuery {
 
 	@PersistenceContext
 	private EntityManager manager;
 	
-	// Método respónsavel por listar todas as cidades cadastras
+	/**
+	 * Método respónsavel por lisatr todas as cidades
+	 */
 	@Override
 	public List<CidadeDTO> listar() {
 

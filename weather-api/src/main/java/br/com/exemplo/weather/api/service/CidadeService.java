@@ -8,11 +8,15 @@ import br.com.exemplo.weather.api.repository.CidadeRepository;
 
 @Service
 public class CidadeService {
-	
-	@Autowired	
+
+	@Autowired
 	private CidadeRepository cidadeRepository;
 
-	// Método respónsavel por alterar a cidade que está syncronizando os dados
+	/**
+	 * Método respónsavel por alterar a cidade que está syncronizando os dados
+	 * @param codigo
+	 * @return Cidade
+	 */
 	public Cidade alterarCidadeSync(Long codigo) {
 
 		Cidade cidadeAtiva = cidadeRepository.findByAtivoIsTrue();		

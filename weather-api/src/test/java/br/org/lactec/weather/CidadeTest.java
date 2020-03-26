@@ -11,6 +11,11 @@ import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
 
 import br.com.exemplo.weather.api.model.Cidade;
 
+/**
+ * Classe respónsvel pelos testes de cidades 
+ * @author Rhafael
+ *
+ */
 public class CidadeTest extends WeatherApplicationTests {
 
 	@Override
@@ -19,6 +24,10 @@ public class CidadeTest extends WeatherApplicationTests {
 		super.setUp();
 	}
 
+	/**
+	 * Método respónsavel por testar a funcionalidade que busca todas as cidades
+	 * @throws Exception
+	 */
 	@Test
 	public void getCidadeList() throws Exception {
 
@@ -34,6 +43,10 @@ public class CidadeTest extends WeatherApplicationTests {
 
 	}
 
+	/**
+	 * Método respónsavel por testar a funcionalidade que busca a cidade que está syncronizando os dados do servidor openweathermap
+	 * @throws Exception
+	 */
 	@Test
 	public void getCidade() throws Exception {
 
@@ -49,6 +62,10 @@ public class CidadeTest extends WeatherApplicationTests {
 
 	}
 
+	/**
+	 * Método respónsavel por testar a funcionalidade que altera a cidade que está syncronizando os dados do servidor openweathermap
+	 * @throws Exception
+	 */
 	@Test
 	public void updateCidade() throws Exception {
 		String uri = "/cidades/6322752/ativo";

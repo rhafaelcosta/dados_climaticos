@@ -17,6 +17,11 @@ import br.com.exemplo.weather.api.model.Cidade;
 import br.com.exemplo.weather.api.repository.CidadeRepository;
 import br.com.exemplo.weather.api.service.CidadeService;
 
+/**
+ * Classe respónsavel por agrupar os recursos REST de cidades
+ * @author Rhafael
+ *
+ */
 @RestController
 @RequestMapping("/cidades")
 public class CidadeResource {
@@ -25,10 +30,11 @@ public class CidadeResource {
 	private CidadeRepository cidadeRepository;
 
 	@Autowired
-	private CidadeService cidadeService;	
+	private CidadeService cidadeService;
+
 	/**
 	 * Listar todas as cidades
-	 * @return Lista de cidades
+	 * @return List<CidadeDTO>
 	 */
 	@GetMapping
 	public List<CidadeDTO> listar() {
@@ -56,8 +62,8 @@ public class CidadeResource {
 	}
 
 	/**
-	 * Método responsavel por alterar a cidade que vai syncronizar os dados climáticos
-	 * @param codigo da cidade
+	 * Método respónsavel por alterar a cidade que vai syncronizar os dados climáticos
+	 * @param codigo
 	 * @return Cidade
 	 */
 	@PutMapping("/{codigo}/ativo")

@@ -15,12 +15,23 @@ import javax.persistence.criteria.Root;
 import br.com.exemplo.weather.api.dto.DadosGraficoDTO;
 import br.com.exemplo.weather.api.model.DadosClimaticos;
 
+/**
+ * Classe respónsavel por implementar as consultas personalizadas de dados climáticos
+ * @author Rhafael
+ *
+ */
 public class DadosClimaticosRepositoryImpl implements DadosClimaticosRepositoryQuery {
 
 	@PersistenceContext
 	private EntityManager manager;
 	
-	// Método responsável por listar todos os dados climaticos, aplicando os filtros informados
+	/**
+	 * Método respónsavel por buscar os dados climaticos
+	 * @param cidadeId
+	 * @param inicio
+	 * @param fim
+	 * @return List<DadosClimaticos>
+	 */
 	@Override
 	public List<DadosClimaticos> buscarDadosClimaticos(Long cidadeId, LocalDate inicio, LocalDate fim) {
 
@@ -37,7 +48,13 @@ public class DadosClimaticosRepositoryImpl implements DadosClimaticosRepositoryQ
 		
 	}
 
-	// Método responsável por agrupor os dados da cidade por mês e ano
+	/**
+	 * Método respónsavel por buscar os dados climaticos agrupados por Mês e Ano
+	 * @param cidadeId
+	 * @param inicio
+	 * @param fim
+	 * @return List<DadosGraficoDTO>
+	 */
 	@Override
 	public List<DadosGraficoDTO> buscarDadosAgrupadosPorMesAno(Long cidadeId, LocalDate inicio, LocalDate fim) {
 		CriteriaBuilder criteriaBuilder = manager.getCriteriaBuilder();		
@@ -64,7 +81,15 @@ public class DadosClimaticosRepositoryImpl implements DadosClimaticosRepositoryQ
 		return query.getResultList();
 	}
 	
-	// Método responsável por criar os filtros do SELECT
+	/**
+	 * Método responsável por criar os filtros do SELECT
+	 * @param cidadeId
+	 * @param inicio
+	 * @param fim
+	 * @param builder
+	 * @param root
+	 * @return Predicate[]
+	 */
 	private Predicate[] criarRestricoes(Long cidadeId, LocalDate inicio, LocalDate fim, CriteriaBuilder builder, Root<DadosClimaticos> root) {
 		
 		List<Predicate> predicates = new ArrayList<>();		

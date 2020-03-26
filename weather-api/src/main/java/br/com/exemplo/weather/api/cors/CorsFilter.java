@@ -19,7 +19,9 @@ import org.springframework.stereotype.Component;
 @Order(Ordered.HIGHEST_PRECEDENCE)
 public class CorsFilter implements Filter {
 
-	// Método respónsavel por habilitar as origens permitidas para comusimir os recursos disponiveis
+	/**
+	 * Método respónsavel por habilitar as origens permitidas para comusimir os recursos disponiveis
+	 */
 	@Override
 	public void doFilter(ServletRequest req, ServletResponse resp, FilterChain chain) throws IOException, ServletException {
 		
